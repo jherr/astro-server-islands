@@ -1,0 +1,43 @@
+---
+import CartList from "../cart-list.astro";
+import CartSkeleton from "../cart-list-skeleton.astro";
+import Header from "../header.astro";
+import Footer from "../footer.astro";
+import OrderSummary from "../order-summary.astro";
+import RelatedProducts from "../related-products.astro";
+
+export const prerender = false;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Asto Shopping Cart</title>
+	</head>
+	<body>
+		<div class="bg-white">
+			<Header />
+		
+			<main class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
+				<h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Shopping Cart</h1>
+		
+				<form class="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
+					<section aria-labelledby="cart-heading" class="lg:col-span-7">
+						<CartList server:defer>
+							<CartSkeleton slot="fallback" />
+						</CartList>	
+					</section>
+		
+					<OrderSummary />
+				</form>
+		
+				<RelatedProducts />
+			</main>
+		
+			<Footer />
+		</div>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+---
+import Product, { type ProductInfo } from './product';
+
+const products = await new Promise<ProductInfo[]>(async (resolve) => {
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  resolve([
+    {
+      id: 1,
+      name: "Basic Tee",
+      price: 32.00,
+      image: "https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-01-product-01.jpg",
+      description: "Front of men's Basic Tee in sienna.",
+      category: "T-shirts",
+      color: "Sienna",
+      size: "Large",
+    },
+    {
+      id: 2,
+      name: "Basic Tee",
+      price: 32.00,
+      image: "https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-01-product-02.jpg",
+      description: "Front of men's Basic Tee in black.",
+      category: "T-shirts",
+      color: "Black",
+      size: "Large",
+    },
+    {
+      id: 3,
+      name: "Nomad Tumbler",
+      price: 35.00,
+      image: "https://tailwindui.com/plus/img/ecommerce-images/shopping-cart-page-01-product-03.jpg",
+      description: "Insulated bottle with white base and black snap lid.",
+      category: "Bottles",
+      color: "White",
+    }
+  ]);
+});
+---
+<h2 id="cart-heading" class="sr-only">Items in your shopping cart</h2>
+
+<ul role="list" class="divide-y divide-gray-200 border-b border-t border-gray-200">
+  {products.map(p => (<Product product={p} />))}
+</ul>

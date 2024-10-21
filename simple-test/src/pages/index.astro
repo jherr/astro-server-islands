@@ -1,0 +1,20 @@
+---
+import SlowLoader from '../slow-loader.astro';
+
+export const prerender = false; 
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Before SlowLoader</h1>
+		<SlowLoader server:defer />
+		<h1>After SlowLoader</h1>
+	</body>
+</html>
